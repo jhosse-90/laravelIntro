@@ -6,6 +6,7 @@ use App\Models\Note;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NoteStoreRequest;
 use App\Http\Requests\NoteUpdateRequest;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -37,7 +38,9 @@ class NoteController extends Controller
     public function store(NoteStoreRequest $request): RedirectResponse
     {
         //
-        Note::create($request->validate());
+        //dd($request->request);
+        Note::create($request->validated());
+
         return redirect()->route('notes.index')
             ->with('success', 'Note Create Succesfully');
     }
@@ -66,7 +69,7 @@ class NoteController extends Controller
     public function update(NoteUpdateRequest $request, Note $note)
     {
         //
-        $note->update($request->validate());
+        $note->update($request->validated());
 
         return redirect()->route('notes.index')
             ->with('success', 'Note Updated Successfully');

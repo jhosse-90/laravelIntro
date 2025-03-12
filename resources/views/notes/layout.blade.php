@@ -14,10 +14,9 @@
             </style>
         @endif
 </head>
-<body>
-    <div class="container">
+<body class="bg-green-100"> 
+    
         @yield('content-notes')
-
-    </div>
+    
 </body>
 </html>

@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoteController;
+use App\Http\Middleware\ChekRole;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('middleRole');
 
 Route::resource('notes', NoteController::class);
 
